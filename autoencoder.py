@@ -64,7 +64,8 @@ def RUN(train_x, train_y, valid_x, valid_y):
 	pool_2 = tf.layers.max_pooling2d(
 			inputs=conv_2,
 			pool_size=[2, 2],
-			strides=2)
+			strides=2,
+			name='encoder_out')
 	print ('pool_2:   ', pool_2.shape)
 
 	deconv_1 = tf.layers.conv2d_transpose(
@@ -154,7 +155,7 @@ def main():
 		pred = sess.run(outputs, feed_dict={images: valid_x})
 
 
-
+	# vusualize result
 	for i, p in enumerate(valid_x):
 		if i > 20:
 			break
